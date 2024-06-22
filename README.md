@@ -30,7 +30,7 @@ interesting that `__volatile_metadata` symbol still in map, but now it `<absolut
 
 so why was error in case **1** ?
 linker add `__volatile_metadata symbol` to `.rdata` section, and if it still not exist - create it. but in forget increment `NumberOfSections` in this case.
-if we already have `.rdata` section - all is ok ( NumberOfSections takes into account .rdata)
+if we already have `.rdata` section - all is ok ( `NumberOfSections` takes into account `.rdata`)
 but if `__volatile_metadata` is single data in .rdata - we have wrong `NumberOfSections` value.
 
 so if we use `/EMITPOGOPHASEINFO` option - we need or have some constant data (`.rdata`) in PE or use `/EMITVOLATILEMETADATA:NO` too
